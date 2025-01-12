@@ -1,0 +1,3 @@
+displayName = Seeds of Evil
+author = Prismatica & Roton
+version = 1.0
