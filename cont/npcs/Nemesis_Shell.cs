@@ -1,10 +1,10 @@
 ﻿using ProjectCorpsebloom.core.def;
 using ProjectCorpsebloom.core.ext;
+using ProjectCorpsebloom.core.help;
 using ProjectCorpsebloom.core.plr.comps;
 
 namespace ProjectCorpsebloom.cont.npcs
 {
-    [AutoloadBossHead]
     internal class Nemesis_Shell : ModNPC
     {
         private int despawnTimer;
@@ -13,9 +13,9 @@ namespace ProjectCorpsebloom.cont.npcs
         internal bool failedSequence;
         internal bool succeededSequence;
 
-        public override LocalizedText DisplayName => base.DisplayName;
+        public override string Texture => PathHelpers.PlaceholderAssetPath;
 
-        public override string BossHeadTexture => base.BossHeadTexture;
+        public override LocalizedText DisplayName => base.DisplayName;
 
         public Player GetPlayerTarget()
         {

@@ -107,8 +107,6 @@
         protected override void Register()
         {
             ModTypeLookup<NemesisData>.Register(this);
-
-            throw new NotImplementedException();
         }
     }
 

@@ -35,6 +35,8 @@ namespace ProjectCorpsebloom.core.def
             killPoints = 0;
             totalPoints = 0;
 
+            mindPosition = Vector2.Zero;
+
             ushort[] tileIDs = [TileID.CorruptGrass, TileID.Ebonstone];
 
             UpdatePoints(tileIDs);
@@ -48,6 +50,8 @@ namespace ProjectCorpsebloom.core.def
             tilePoints = 0;
             killPoints = 0;
             totalPoints = 0;
+
+            mindPosition = Vector2.Zero;
 
             ushort[] tileIDs = [TileID.CorruptGrass, TileID.Ebonstone];
             UpdatePoints(tileIDs);
@@ -83,10 +87,10 @@ namespace ProjectCorpsebloom.core.def
 
         internal void ReadSeed(int seed)
         {
-            int[] ints = [];
+            int[] ints = new int[5];
             for (int i = 0; i < 8; i++)
             {
-                if (i <= 4)
+                if (i >= 4)
                     ints[4] += seed % 10;
                 else
                     ints[i] = seed % 10 > 0 ? seed % 10 : 1;

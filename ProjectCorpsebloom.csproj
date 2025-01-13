@@ -8,6 +8,7 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="asset\texture\misc\placeholder.png" />
 	  <None Remove="description_workshop.txt" />
 	</ItemGroup>
 
@@ -15,7 +16,6 @@
 	<ItemGroup>
 	  <Folder Include="asset\music\" />
 	  <Folder Include="asset\sound\" />
-	  <Folder Include="asset\texture\" />
 	  <Folder Include="cont\items\cosmetics\" />
 	  <Folder Include="cont\items\armor\" />
 	  <Folder Include="cont\items\tiles\entities\" />
@@ -23,12 +23,12 @@
 	  <Folder Include="cont\items\tiles\functional\" />
 	  <Folder Include="cont\items\tiles\decoration\" />
 	  <Folder Include="cont\items\tiles\blocks\" />
+	  <Folder Include="cont\items\tools\" />
 	  <Folder Include="cont\items\weapons\caustic\" />
 	  <Folder Include="cont\items\weapons\sceptic\" />
 	  <Folder Include="cont\npcs\corrupt\" />
 	  <Folder Include="cont\npcs\crimson\" />
 	  <Folder Include="cont\projectiles\" />
-	  <Folder Include="core\help\" />
 	  <Folder Include="core\wrld\" />
 	  <Folder Include="core\ui\" />
 	</ItemGroup>
