@@ -1,5 +1,6 @@
 ﻿using ProjectCorpsebloom.core.def;
 using ProjectCorpsebloom.core.ext;
+using ProjectCorpsebloom.core.help;
 using ProjectCorpsebloom.core.plr.comps;
 
 namespace ProjectCorpsebloom.core.sys
@@ -17,7 +18,7 @@ namespace ProjectCorpsebloom.core.sys
 
         public int worldSpawnTimer;
 
-        public Vector2 originPoint;
+        public Point originPoint;
 
         public override void PreUpdateWorld()
         {
@@ -53,15 +54,32 @@ namespace ProjectCorpsebloom.core.sys
 
         public void SpawnObelisk(bool isCrimson) 
         {
-            ushort[] tileIDs = null; // = isCrimson ? WorldUtils.crimsonTiles : WorldUtils.corruptTiles;
+            //select point on the map some odd 600-800 blocks away from spawn (whereabouts the usual evil would spawn)
+            int x = Main.rand.Next(Main.maxTilesX - Main.spawnTileX - 800, Main.spawnTileX - 600);
+            int y = 0;
+            while (y < Main.worldSurface)
+            {
+                if (WorldGen.SolidTile(x, y))
+                    break;
 
-            //select point on the map some odd 300-700 blocks away from spawn (whereabouts the usual evil would spawn)
+                y++;
+            }
 
-            //create a crater, crater lined with stone and infected tiles
+            //ENSURE the area is not a mountain
+
+            //gen wide stone + evil tileID semi-circle, 66 wide, 22 deep at x/y origin
+            //gen empty semi-circle 60 wide, 15 deep, offset x by 3 (how we sim the crater shape)
+
+            //"cocoon" variable gen depending on what we choose here. just make a cobalt brick blob for a reference point for now (offset to be placed within the crater at center)
 
             //create the obelisk, either a bulbous mass or a Dead Space Marker style object
 
-            activeMind.UpdatePoints(tileIDs); //account for newly spawned tiles
+            //figure out a way to spawn cultists(?)
+
+            Rectangle area = new(x, y + 20, 60, 40);
+            originPoint = area.Center;
+
+            activeMind.UpdatePoints(activeMind.isCrimson ? WorldHelper.CrimTileIDs : WorldHelper.CorrTileIDs);
         }
 
         public void KillMind()
