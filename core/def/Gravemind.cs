@@ -1,4 +1,5 @@
-﻿using Terraria.WorldBuilding;
+﻿using ProjectCorpsebloom.core.help;
+using Terraria.WorldBuilding;
 
 namespace ProjectCorpsebloom.core.def
 {
@@ -37,9 +38,7 @@ namespace ProjectCorpsebloom.core.def
 
             mindPosition = Vector2.Zero;
 
-            ushort[] tileIDs = [TileID.CorruptGrass, TileID.Ebonstone];
-
-            UpdatePoints(tileIDs);
+            UpdatePoints(isCrimson ? WorldHelper.CrimTileIDs : WorldHelper.CorrTileIDs);
         }
 
         public Gravemind(int strainSeed)
@@ -53,8 +52,7 @@ namespace ProjectCorpsebloom.core.def
 
             mindPosition = Vector2.Zero;
 
-            ushort[] tileIDs = [TileID.CorruptGrass, TileID.Ebonstone];
-            UpdatePoints(tileIDs);
+            UpdatePoints(isCrimson ? WorldHelper.CrimTileIDs : WorldHelper.CorrTileIDs);
         }
 
         public static readonly Func<TagCompound, Gravemind> DESERIALIZER = Load;
@@ -76,11 +74,10 @@ namespace ProjectCorpsebloom.core.def
                 strainSeed = tag.GetInt(nameof(strainSeed)),
             };
 
-            ushort[] tileIDs = [TileID.CorruptGrass, TileID.Ebonstone];
             var temp = n.strainSeed;
 
             n.ReadSeed(temp);
-            n.UpdatePoints(tileIDs);
+            n.UpdatePoints(n.isCrimson ? WorldHelper.CrimTileIDs : WorldHelper.CorrTileIDs);
 
             return n;
         }
@@ -103,10 +100,10 @@ namespace ProjectCorpsebloom.core.def
             invasionFrequency = ints[3];
             startingPoints = ints[4] * 10;
         }
+
         public void UpdatePoints(ushort[] tileIDs)
         {
-            Dictionary<ushort, int> tileCounts = [];
-            WorldUtils.Gen(new Point(0, 0), new Shapes.Rectangle(Main.maxTilesX, Main.maxTilesY), new Actions.TileScanner(tileIDs).Output(tileCounts));
+            Dictionary<ushort, int> tileCounts = WorldHelper.TileCounter(tileIDs, new Shapes.Rectangle(Main.maxTilesX, Main.maxTilesY), new(0, 0));
 
             tilePoints = 0;
             foreach (ushort tileID in tileIDs)

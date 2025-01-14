@@ -2,6 +2,8 @@
 {
     internal class InfectionComponent : PlayerComponent
     {
+        public float infectionLevel;
+
 
     }
 }

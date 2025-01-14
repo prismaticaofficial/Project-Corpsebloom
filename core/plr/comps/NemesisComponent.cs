@@ -8,21 +8,48 @@ namespace ProjectCorpsebloom.core.plr.comps
     {
         public NemesisData currentNemesis;
 
+        public bool attemptingSpawn = false;
         public int spawnTimer;
 
-        public static bool CanSpawnInWorld() => Main.player.All(x => x.TryGetComponent(out NemesisComponent nC) && nC.currentNemesis.activeInWorld);
+        public static bool CanSpawnInWorld() => Main.player.All(x => x.TryGetComponent(out NemesisComponent nC) && !nC.attemptingSpawn && !nC.currentNemesis.activeInWorld);
 
         public bool SpawnNemesis()
         {
-            Vector2 spawnPoint = !Player.InLiquid() && Player.IsAlive() && Player.velocity.Y == 0 ? new((int)Player.position.X, (int)Player.position.Y) : new(0, 0);
+            attemptingSpawn = true;
 
-            if (!Main.dedServ && spawnPoint == Vector2.Zero)
+            Vector2 spawnPoint = Vector2.Zero;
+            int checkTimer = 60;
+            int attemptCount = 0;
+
+            while (spawnPoint == Vector2.Zero)
             {
-                NPC.NewNPC(new EntitySource_Parent(Player), (int)spawnPoint.X, (int)spawnPoint.Y, ModContent.NPCType<Nemesis_Shell>());
-                return true;
+                checkTimer--;
+
+                if (attemptCount >= 10)
+                    break;
+
+                if (checkTimer < 0)
+                {
+                    if (!Player.InLiquid() && Player.IsAlive() && Player.velocity.Y == 0)
+                        spawnPoint = new((int)Player.position.X, (int)Player.position.Y);
+
+                    else
+                    {
+                        checkTimer = 90;
+                        attemptCount++;
+                    }
+                }
             }
 
-            else return false;
+            if (spawnPoint == Vector2.Zero && attemptCount >= 10)
+                return attemptingSpawn = false;
+
+            else
+            {
+                NPC.NewNPC(new EntitySource_Parent(Player), (int)spawnPoint.X, (int)spawnPoint.Y, ModContent.NPCType<Nemesis_Shell>());
+                attemptingSpawn = false;
+                return true;
+            }
         }
 
         public override void C_SaveData(TagCompound t)

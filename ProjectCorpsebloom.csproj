@@ -23,7 +23,6 @@
 	  <Folder Include="cont\items\tiles\functional\" />
 	  <Folder Include="cont\items\tiles\decoration\" />
 	  <Folder Include="cont\items\tiles\blocks\" />
-	  <Folder Include="cont\items\tools\" />
 	  <Folder Include="cont\items\weapons\caustic\" />
 	  <Folder Include="cont\items\weapons\sceptic\" />
 	  <Folder Include="cont\npcs\corrupt\" />

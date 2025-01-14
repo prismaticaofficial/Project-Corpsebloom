@@ -3,10 +3,17 @@
 A mod aimed at expanding upon and emboldening the world evils.
 
 ## IT STARTS WITH A SEED...
-
 Picture this; following your victory over the dreaded Eye, a few days pass. Randomly, an object shoots through the sky and lands in your world. 
 Confused, you approach it. Cultists have taken to it, seemingly worshipping it. 
-
 In an instant, creatures and infected masses begin sprouting and tainting the ground below. The Cultists are consumed and turned into hellish monsters.
 
 You can't break it, you can't fight it, so you run. 
+
+## THE GRAVEMIND
+
+
+## A NEW THREAT EMERGES
+Should you become enough of a threat, the Gravemind can spawn one of its most devious works; the Nemesis.
+It stalks, it steals, it terrorizes. Only a special mixed serum can be used to defeat this creature and get it off your back.
+Kill or enslave, you will be rewarded for your troubles.
+

@@ -45,7 +45,8 @@ namespace ProjectCorpsebloom.core.sys
 
         public override void PostUpdateEverything()
         {
-            activeMind.UpdateMind();
+            if (activeMind.isActiveInWorld)
+                activeMind.UpdateMind();
 
             base.PostUpdateEverything();
         }

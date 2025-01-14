@@ -1,1 +1,8 @@
 NPCs.Nemesis_Shell.DisplayName: Nemesis_ Shell
+
+Items: {
+	Bioscanner: {
+		DisplayName: Bioscanner
+		Tooltip: ""
+	}
+}
