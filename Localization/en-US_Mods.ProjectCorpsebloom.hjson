@@ -5,4 +5,19 @@ Items: {
 		DisplayName: Bioscanner
 		Tooltip: ""
 	}
+
+	NemesisRelicItem: {
+		DisplayName: Nemesis Relic Item
+		Tooltip: ""
+	}
+
+	HearseDriver: {
+		DisplayName: Hearse Driver
+		Tooltip: ""
+	}
+
+	Masticator: {
+		DisplayName: Masticator
+		Tooltip: ""
+	}
 }

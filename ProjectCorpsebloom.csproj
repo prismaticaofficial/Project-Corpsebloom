@@ -16,18 +16,21 @@
 	<ItemGroup>
 	  <Folder Include="asset\music\" />
 	  <Folder Include="asset\sound\" />
+	  <Folder Include="cont\items\armor\melee\" />
+	  <Folder Include="cont\items\armor\mage\" />
+	  <Folder Include="cont\items\armor\ranger\" />
 	  <Folder Include="cont\items\cosmetics\" />
-	  <Folder Include="cont\items\armor\" />
 	  <Folder Include="cont\items\tiles\entities\" />
 	  <Folder Include="cont\items\tiles\environment\" />
-	  <Folder Include="cont\items\tiles\functional\" />
 	  <Folder Include="cont\items\tiles\decoration\" />
 	  <Folder Include="cont\items\tiles\blocks\" />
-	  <Folder Include="cont\items\weapons\caustic\" />
 	  <Folder Include="cont\items\weapons\sceptic\" />
 	  <Folder Include="cont\npcs\corrupt\" />
 	  <Folder Include="cont\npcs\crimson\" />
 	  <Folder Include="cont\projectiles\" />
+	  <Folder Include="cont\tiles\environment\" />
+	  <Folder Include="cont\tiles\blocks\" />
+	  <Folder Include="cont\tiles\furniture\" />
 	  <Folder Include="core\wrld\" />
 	  <Folder Include="core\ui\" />
 	</ItemGroup>

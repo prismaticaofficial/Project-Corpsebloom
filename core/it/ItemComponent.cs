@@ -8,7 +8,6 @@ namespace ProjectCorpsebloom.core.it
         /// Whether or not this component is enabled on this item.
         /// </summary>
         public bool Enabled { get; set; }
-
         public override bool InstancePerEntity { get; } = true;
 
         public virtual void OnEnable(Item it) { }
@@ -30,6 +29,7 @@ namespace ProjectCorpsebloom.core.it
         public virtual void C_ModTooltips(Item it, List<TooltipLine> tt) { }
         public virtual void C_NetRecieve(Item it, BinaryReader bR) { }
         public virtual void C_NetSend(Item it, BinaryWriter bW) { }
+        public virtual void C_OnCreate(Item it, ItemCreationContext c) { }
         /// <summary>
         /// Allows you to draw in front of the item in the inventory, even if PreDraw returns false.
         /// </summary>
@@ -99,6 +99,13 @@ namespace ProjectCorpsebloom.core.it
         {
             if (Enabled)
                 C_NetSend(item, writer);
+        }
+        public sealed override void OnCreated(Item item, ItemCreationContext context)
+        {
+            if (Enabled)
+                C_OnCreate(item, context);
+
+            base.OnCreated(item, context);
         }
         public sealed override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {

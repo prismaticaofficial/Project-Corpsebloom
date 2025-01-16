@@ -1,6 +1,7 @@
 ﻿namespace ProjectCorpsebloom.core.npc.comps
 {
-    internal class MutationComponent
+    internal class MutationComponent : NPCComponent
     {
+
     }
 }

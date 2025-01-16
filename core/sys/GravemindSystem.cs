@@ -46,7 +46,7 @@ namespace ProjectCorpsebloom.core.sys
 
         public override void PostUpdateEverything()
         {
-            if (activeMind.isActiveInWorld)
+            if (activeMind is not null && activeMind.isActiveInWorld)
                 activeMind.UpdateMind();
 
             base.PostUpdateEverything();
@@ -64,6 +64,7 @@ namespace ProjectCorpsebloom.core.sys
 
                 y++;
             }
+            Rectangle area = new(x, y + 20, 60, 40);
 
             //ENSURE the area is not a mountain
 
@@ -75,8 +76,6 @@ namespace ProjectCorpsebloom.core.sys
             //create the obelisk, either a bulbous mass or a Dead Space Marker style object
 
             //figure out a way to spawn cultists(?)
-
-            Rectangle area = new(x, y + 20, 60, 40);
             originPoint = area.Center;
 
             activeMind.UpdatePoints(activeMind.isCrimson ? WorldHelper.CrimTileIDs : WorldHelper.CorrTileIDs);
